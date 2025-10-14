@@ -1,0 +1,55 @@
+- Create VLANs and name them
+  - `conf t`
+  - `vlan 10`
+  - `name users`
+  - `exit`
+  - `vlan 20`
+  - `name voice`
+  - `exit`
+  - `vlan 30`
+  - `name servers`
+  - `exit`
+  - `vlan 99`
+  - `name management`
+  - `exit`
+- Assign access ports with descriptions
+  - `int range gi0/1-12`
+  - `switchport mode access` 
+  - `switchport access vlan 10`
+  - `description Users-Access-Ports`
+  - `no shutdown` 
+  - `exit`
+  - `int range gi0/13-16`
+  - `switchport mode access` 
+  - `switchport access vlan 20`
+  - `description Voice-Access-Ports`
+  - `no shutdown` 
+  - `exit`
+  - `int range gi0/17-20`
+  - `switchport mode access` 
+  - `switchport access vlan 30`
+  - `description Servers-Access-Ports`
+  - `no shutdown` 
+  - `exit`
+  - `int gi0/24`
+  - `switchport mode access` 
+  - `switchport access vlan 99`
+  - `description Management-Access-Ports`
+  - `no shutdown` 
+  - `exit`
+- Configure Switch Virtual Interface
+  - `int vlan 99`
+  - `description Management-SVI`
+  - `ip add 192.168.99.254 255.255.255.0`
+  - `no sh`
+  - `exit`
+  - `ip default-gateway 192.168.99.1`
+- We are going to shutdown unused ports right now
+  - `int range gi0/21 - 23`
+  - `switchport mode access`
+  - `switchport access vlan 1`
+  - `shutdown`
+  - `description Unused-Port`
+  - `exit`
+
+
