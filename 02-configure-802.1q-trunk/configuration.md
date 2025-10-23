@@ -1,0 +1,18 @@
+- Configure trunk ports to create a link between switches that carry multiple VLAN traffic
+  - `conf t`
+  - `int gi 0/48`
+  - `description trunk to switch 1`
+  - `switchport mode trunk`
+  - `switchport trunk allowed van 10,20,30,40`
+  - `no sh`
+  - `exit`
+- Configure native VLAN ( native VLANs carries untagged frames and so configure management VLANs for security and in that it prevents accidental access to user VLANs)
+  - `int gi0/48`
+  - `switchport trunk native plan 99`
+  - `exit`
+- Configure trunk descriptions where necessary
+  - `int gi0/48`
+  - `desc trunk from switch 1 to switch 12 thoguh gi0/48`
+  - `exit`
+- Save changes
+  - `cp running-config startup-config`

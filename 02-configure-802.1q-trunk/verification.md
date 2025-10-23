@@ -1,0 +1,9 @@
+- Verity trunk status
+  - `sh int trunk `
+  - `sh int gi0/48 trunk`
+- Verify VLAN membership
+  - `sh vlan br`
+  - `sh vlan 99 br`
+- Verify MAC address table
+  - `sh mac address-table`
+  - `sh mac address-table vlan 10`

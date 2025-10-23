@@ -1,0 +1,8 @@
+- Ping connectivity between swtihces
+  - From switch 1, VLAN 10, `ping 192.168.10.2`
+  - From switch 2, VLAN 10, `ping 192.168.10.3`
+- Verify the interface status to up and up
+  - `sh int gi0/48`
+  - `sh int status`
+- Verify spanning tree not blocking trunk
+  - `sh spanning-tree`
