@@ -1,0 +1,41 @@
+- Create management VLAN isolated management traffic for security
+  - `conf t`
+  - `vlan 10`
+  - `name management VLAN`
+  - `exit`
+- Configure switch virtual interface to enable ip communication on that VLAN and assign IP to SVI
+  - `int vlan 10`
+  - `description management-SVI`
+  - `ip add 10.0.0.123 255.255.255.0`
+  - `no sh`
+  - `exit`
+- Configure default gateway to reach networks outside management VLAN
+  - `ip default-gateway 192.168.10.1`
+- Configure SSH
+  - `crypto key generate rsa modulus 2048`
+  - `ip ssh version 2`
+  - `ip ssh time-out 120`
+  - `ip ssh authentication-retries 3`
+  - `line vey 0 4`
+  - `transport input ssh`
+  - `login local`
+  - `exit`
+
+- We are disabling telnet (optional step but best practice) - prevents unencrypted telnet and auxiliary port access
+  - `line vty 0 4`
+  - `no transport input telnet`
+  - `exit`
+  - `line aux 0`
+  - `transport input none`
+  - `exit`
+
+- Create admin account with full admin access (privilege to be at 15)
+  - `username admin privilege 15 secret [password]`
+
+- Configure login authentication with local username/password database 
+  - `line vey 0 4`
+  - `login local`
+  - `exit`
+  - `line console 0`
+  - `login local`
+  - `exit`

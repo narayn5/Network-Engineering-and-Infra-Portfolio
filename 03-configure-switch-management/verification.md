@@ -1,0 +1,7 @@
+- Displays summary of all VLANS 
+  - `show vlan brief`
+- `show interfaces vlan 10`
+- `show ip interface brief`
+- `show ssh`
+- `show users`
+- `show running-config | include username`
