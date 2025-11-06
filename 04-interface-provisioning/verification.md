@@ -1,0 +1,6 @@
+- `show ip interface brief`
+- `show interfaces`
+- `show interfaces description`
+- `show interfaces GigabitEthernet0/0`
+- `show ip interface`
+- `ping` and `traceroute`
