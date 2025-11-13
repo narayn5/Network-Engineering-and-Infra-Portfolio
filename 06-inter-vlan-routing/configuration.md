@@ -1,0 +1,40 @@
+- Create VLANs
+  - `conf t`
+  - `vlan 10`
+  - `name users`
+  - `vlan 20`
+  - `name services`
+  - `vlan 13`
+  - `name support`
+- Configure access for VLANs
+  - `int gi0/1`
+  - `switchport mode access`
+  - `switchport access plan 10`
+  - `no sh`
+  - `int gi0/6`
+  - `switchport mode access`
+  - `switchport access plan 20`
+  - `no sh`
+  - `int gi0/11`
+  - `switchport mode access`
+  - `switchport access plan 30`
+  - `no sh`
+- Configure trunk and allow the VLANs
+  - `int g0/25`
+  - `switchport mode trunk`
+  - `switchport trunk allowed vlan 10,20,30`
+  - `no sh`
+  - `ex`
+- Configure SVIs
+  - `int vlan 10`
+  - `ip add 10.10.10.5 255.255.255.0`
+  - `no sh`
+  - `ex`
+  - `int vlan 20`
+  - `ip add 10.10.20.5 255.255.255.0`
+  - `no sh`
+  - `ex`
+  - `int vlan 30`
+  - `ip add 10.10.30.5 255.255.255.0`
+  - `no sh`
+  - `ex`

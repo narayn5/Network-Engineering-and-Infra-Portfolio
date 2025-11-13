@@ -1,0 +1,44 @@
+- Create VLANs, configure trunk ports, configure sub interfaces on router with dot1q encapsulation
+- Create VLANs
+  - `conf t`
+  - `vlan 10`
+  - `name users`
+  - `vlan 20`
+  - `name services`
+  - `vlan 13`
+  - `name support`
+- Configure access for VLANs
+  - `int gi0/1`
+  - `switchport mode access`
+  - `switchport access plan 10`
+  - `no sh`
+  - `int gi0/6`
+  - `switchport mode access`
+  - `switchport access plan 20`
+  - `no sh`
+  - `int gi0/11`
+  - `switchport mode access`
+  - `switchport access plan 30`
+  - `no sh`
+- Configure trunk and allow the VLANs
+  - `int g0/25`
+  - `switchport mode trunk`
+  - `switchport trunk allowed vlan 10,20,30`
+  - `no sh`
+  - `ex`
+- Configure sub-interfaces on the router
+  - `int g0/1.10`
+  - `encapsulation dot1q`
+  - `ip add 10.10.10.2 255.255.255.0`
+  - `no sh`
+  - `ex`
+  - `int g0/1.20`
+  - `encapsulation dot1q`
+  - `ip add 10.10.20.2 255.255.255.0`
+  - `no sh`
+  - `ex`
+  - `int g0/1.30`
+  - `encapsulation dot1q`
+  - `ip add 10.10.40.2 255.255.255.0`
+  - `no sh`
+  - `ex`

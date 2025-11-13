@@ -1,0 +1,6 @@
+- `sh vlan br`
+- `sh int trunk`
+- `sh ip int br`
+- `sh ip route`
+- `ping 10.10.10.1`
+- `traceroute 10.10.10.1`
