@@ -1,0 +1,30 @@
+- Create a DHCP Pool
+  - Create a CHCP pool with 10.0.0.0/24 network 
+  - `conf t`
+  - `ip dhcp-pool Branch-Users`
+  - `network 10.0.10.0 255.255.255.0`
+  - `ex`
+  - `write memory`
+- Define IPs for exclusion from DHCP 
+  - `conf t`
+  - `ip dhcp excluded-address 10.0.10.1 10.0.10.5` (range from 1 to 5)
+  - `ip dhcp excluded-address 10.0.10.254 10.0.10.255`
+  - `write memory`
+- Configure Gateway and DNS server
+  - `conf t`
+  - `ip dhcp pool Branch-Users`
+  - `default-router 10.0.10.240`
+  - `dns-server 8.8.8.8 4.4.4.4` (primary google DNS, secondary 4.4.4.4)
+  - `ex`
+  - `write memory`
+- Configure DHCP Lease
+  - `conf t`
+  - `lease 8 4 32` (8 days 4 hours 32 minutes)
+  - `ex`
+  - `write memory`
+- Enable DHCP on clients
+  - `conf t`
+  - `int gi0/12`
+  - `ip add dhcp`
+  - `no sh`
+  - `exit`
