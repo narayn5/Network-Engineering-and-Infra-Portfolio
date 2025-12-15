@@ -1,0 +1,5 @@
+- `show spanning-tree`
+- `show spanning-tree vlan 10 detail`
+- `show spanning-tree root`
+- `show spanning-tree blockedports`
+- `show interfaces trunk`

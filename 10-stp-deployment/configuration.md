@@ -1,0 +1,29 @@
+- Configure STP
+  - `conf t`
+  - `spanning-tree mode rapid-pvst`
+  - `exit`
+- Identify root bridge (lowest bridge priority + Mac address)
+  - `sh spanning-tree summary`
+  - `sh spanning-tree`
+- Configure root bridge priority (lower priority is likely to become root)
+  - `conf t`
+  - `spanning-tree clan 10,20,30,99 priority 4096`
+  - Increments of 4096 for secondary root and non-root 
+- Verity port rules
+  - `sh spanning-tree`
+  - `sh  spanningt-tree vlan 10`
+  - Port roles:
+    - Root port is the best path to root bridge, one root port per switch except root
+    - Designated port forwards traffic; root bridge has all its ports as designated
+    - Alternate port is backup port and it is blocked by default
+- Verify port states
+  - `sh spanning-tree detail`
+  - `sh int status`
+  - Port states: forwarding, blocking , learning, listening, disabled 
+- Manipulate STP cost path: default cost is based on link speeds; Low cost becomes preferred path, adjusted to influence root port selection
+  - `conf t`
+  - `int gi0/48`
+  - `spanning-tree clan 10 cost 100`
+  - `exit`
+
+
