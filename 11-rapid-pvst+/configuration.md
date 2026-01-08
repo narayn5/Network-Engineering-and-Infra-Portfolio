@@ -1,0 +1,24 @@
+- Configure Rapid-PVST+
+  - `conf t`
+  - `spanning-tree mode rapid-pvst`
+  - `exit`
+- Configure root bridge
+  - `conf t`
+  - `spanning-tree clan 10,20,30 priority 4096`
+  - `exit`
+- Configure secondary root
+  - `conf t`
+  - `spanning-tree clan 10,20,30 priority 8192`
+  - `exit`
+- Configure port fast (skips listening /learning states and enters forwarding mode faster)
+  - `conf t`
+  - `int range gi0/1-46`
+  - `spanning-tree portfast`
+  - `exit`
+- Configure BPDU guard (security measure - protects against accidental switch connections to access ports)
+  - `int range gi0/1-46`
+  - `spanning-tree bpduguard enable`
+  - `exit`
+  - BPDUs received on access port, the port automatically shuts down:
+    - `eradicable recovery cause bpduguard`
+    - `err disable recovery interval 30`
