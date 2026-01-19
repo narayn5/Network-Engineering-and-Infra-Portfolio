@@ -1,0 +1,6 @@
+- `show spanning-tree portfast`
+- `show spanning-tree bpduguard`
+- `show spanning-tree guard`
+- `show errdisable recovery`
+- `show interfaces status | include err-disabled`
+- `debug spanning-tree events`

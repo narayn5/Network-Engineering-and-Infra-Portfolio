@@ -1,0 +1,33 @@
+- Configure portfast
+  - `conf t`
+  - `int gi0/5`
+  - `spanning-tree portfast`
+  - `desc user access portfast`
+  - `exit`
+- Configure BPDU guard
+  - `int gi0/5`
+  - `spanning-tree bpduguard enable`
+  - `exit`
+  - Auto recovery:
+    - `errdisable recovery cause bpduguard`
+    - `eradisable recovery interval 30`
+    - `exit`
+- Verify BPDU guard
+  - `sh spanning-tree portfast`
+  - `sh errdisable recovery`
+- Configure root guard (prevents unmanaged switch from becoming root bridge)
+  - `int gi0/5`
+  - `spanning-tree guard root`
+  - `exit`
+  - On trunk ports: use root guard connecting to other switches 
+  - On access ports:  Portfast + BPDU guard sufficient for access ports
+- Configure loop guard (detects unidirectional link failure and prevents alt ports from becoming forwarding state)
+  - `int gi0/5`
+  - `spanning-tree guard loop`
+  - `exit`
+  - Loop guard is useful on trunk; for access ports, BPDU should be good enough
+- Configure BPDU filter 
+  - `int gi0/5`
+  - `spanning-tree bpdufilter enable`
+  - `exit`
+  - Drops inbound and outbound BPDUs. Can create loops if misconfigured. Use BPDU guard.
