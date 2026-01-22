@@ -1,0 +1,4 @@
+- `sh standby br`
+- `sh standby detail`
+- `sh standby Vlan10`
+- `sh standby all`

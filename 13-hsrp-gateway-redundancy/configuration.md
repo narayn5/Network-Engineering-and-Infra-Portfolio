@@ -1,0 +1,23 @@
+- 2 switches - 10.10.1.1 and 10.10.1.2 
+- Virtual ip address - 10.10.1.254
+- VLAN 10 10.10.1.0/24 network 
+- Switch one configuration
+  - `conf t`
+  -  `int Vlan10`
+  - ` ip add 10.10.1.1 255.255.255.0`
+  - `standby 1 ip 10.10.1.254`
+  - `standby 1 priority 110`
+  - ` standby 1 preempt`
+  - ` standby 1 timers 3 10`
+  - ` no sh`
+  - `exit`
+  - ` write memory`
+- Switch two configuration
+  - `conf t`
+  - `int Vlan10`
+  - `ip add 10.10.1.2 255.255.255.0`
+  - `standby 1 ip 10.10.1.254`
+  - `standby 1 priority 100`
+  - `no sh`
+  - `exit`
+  - `write memory`
