@@ -1,0 +1,20 @@
+- Check for any physical damage and missing indicators and such
+- Note model and serial number and match with the invoice
+- Connect:
+  - Power cable to power socket
+  - Locate management port, Usb cable to management port and other end to the PC
+  - Identify which COM port 
+  - Connect to router through PuTTY or hyper terminal at 9600 baud rate
+  - Enter `sh ver` to view IOS version
+  - Document model, serial number, factory IOS version, date in confluence
+- Back up:
+  - Factory configuration backup (check with colleagues)
+  - If using windows server, `TFTPD64` and linux `tufted-hpa`
+  - `cp startup-config tftp://enter-server-ip-here/factory-config.txt` 
+  - Upload this to confluence documentation
+- Erase:
+  - `erase startup-config`
+  - `reload`
+- On reload:
+  - `sh ver`
+  - Note version, consult with senior engineer regarding IOS upgrade

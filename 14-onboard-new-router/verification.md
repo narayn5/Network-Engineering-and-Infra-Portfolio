@@ -1,0 +1,12 @@
+- Show IOS Version	
+  - `sh version`
+- flash memory contents and available space
+  - `sh flash:`
+- List hardware components (modules, serial numbers)
+  - `sh inventory`
+- Sh active console/SSH/Telnet sessions
+  - `sh users`
+- Sh SSH configuration and status
+  - `sh ip ssh`
+- sh boot system configuration and next reload image
+  - `show boot`
