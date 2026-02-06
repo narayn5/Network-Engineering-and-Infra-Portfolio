@@ -1,0 +1,59 @@
+- Configure hostname	
+
+  - `conf t`
+  - `hostname NewRouter01` or check with senior engineer
+
+- Configure enable secret
+
+  - `enable secret [passwd]` (consult with senior)
+
+- Configure console password
+
+  - `line console 0`
+  - `password [passwd]` (check with senior)
+  - `login`
+  - `exit`
+
+- Configure VTY (SSH/Telnet) password
+
+  - `line vty 0 4`
+  - `password [passwd]` (check with senior)
+  - `login`
+  - `exit`
+
+- Configure local username/password
+
+  - `username <username> privilege <number> secret [passwd]` (check with senior)
+
+- Configure banner MOTD
+
+  - `banner motd #`
+  - `=== your banner text goes here ===`
+
+- Configure management IP, DNS, Default Gateway
+
+  -  `interface vlan 1`  
+  - `ip add 192.168.1.50 255.255.255.0` 
+  - ` no sh` 
+  - `exit`
+
+  - `ip route 0.0.0.0 0.0.0.0 192.168.1.1`
+
+  - `ip name-server 8.8.8.8 8.8.4.4` 
+
+- Configure domain name
+
+  - `ip domain-name example.com`
+
+## SSH Configuration
+
+- Generate RSA keys
+  - `crypto key generate rsa modulus 2048`
+- Enable SSH v2
+  - `ip ssh version 2`
+  - `line vty 0 4`
+  - `transport input ssh`
+  - `login local`
+  - `exit`
+- Save configuration
+  - `write memory` or `cp running-config startup-config`
