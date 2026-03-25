@@ -1,0 +1,9 @@
+- Configure RSTP
+  - `configure`
+  - `set protocols rstp`
+  - `commit`
+- Configure trunk link between switches 
+  - `set interfaces ge-0/0/0 unit 0 family ethernet-switching interface-mode trunk`
+  - `set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members vlan10`
+- Make switch1 the root bridge
+  - `set protocols rstp bridge-priority 4k`
