@@ -1,0 +1,5 @@
+- `show interfaces ae0`
+- `show interfaces ae0 extensive`
+- `show lacp interfaces`
+- `show lacp interface ae0`
+- `show lacp statistics`
