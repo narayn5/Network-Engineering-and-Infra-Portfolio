@@ -1,0 +1,22 @@
+- configuration
+  - On Switch 1,
+    - `configure`
+    - `set interfaces ge-0/0/0 unit 0 family inet address 192.168.1.1/30`
+    - `set routing-options static route 10.20.20.0/24 next-hop 192.168.1.2`
+    - `commit`
+  - On Switch 2,
+    - `configure`
+    - `set interfaces ge-0/0/0 unit 0 family inet address 192.168.1.2/30`
+    - `set routing-options static route 10.10.10.0/24 next-hop 192.168.1.1`
+    - `commit`
+- If on VLAN interfaces
+  - On Switch 1,
+    - `set interfaces irb unit 10 family inet address 10.10.10.1/24`
+    - `set interfaces irb unit 100 family inet address 192.168.1.1/30`
+    - `set routing-options static route 10.20.20.0/24 next-hop 192.168.1.2`
+  - On Switch 2,
+    - `set interfaces irb unit 20 family inet address 10.20.20.1/24`
+    - `set interfaces irb unit 100 family inet address 192.168.1.2/30`
+    - `set routing-options static route 10.10.10.0/24 next-hop 192.168.1.1`
+
+
