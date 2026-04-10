@@ -1,0 +1,3 @@
+- `show ip ospf neighbor`
+- `show ip route ospf`
+- `ping 3.3.3.3`
