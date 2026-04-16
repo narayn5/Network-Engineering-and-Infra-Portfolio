@@ -1,0 +1,3 @@
+- `show ip eigrp neighbors`
+- `show ip route eigrp`
+- `ping 3.3.3.3`
