@@ -1,0 +1,3 @@
+- `show ipv6 ospf neighbor`
+- `show ipv6 route ospf`
+- `ping ipv6 2001:db8:3::3`
