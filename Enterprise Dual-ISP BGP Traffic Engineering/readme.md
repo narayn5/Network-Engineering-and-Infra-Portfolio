@@ -1,0 +1,3 @@
+# BGP Multi-ISP Redundancy Lab
+
+This project shows how a company can use BGP to connect to two different internet providers and keep the network running if one connection goes down. I configured BGP between the enterprise network and two ISPs, and used features like MED, AS-path prepending, and BGP communities to control which connection is preferred for different types of traffic. The lab also demonstrates how BGP can automatically switch traffic to the backup ISP when the primary connection fails.
