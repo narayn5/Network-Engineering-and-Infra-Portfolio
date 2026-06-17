@@ -1,0 +1,3 @@
+In this project, the network (R1) explicitly chooses the path R1 → R2 → R3 → R4 and reserves 30 Mbps of bandwidth along that route. If the link between R2 and R3 fails, the network automatically reroutes through R5 (the backup path) in milliseconds, without dropping traffic. This is Fast Reroute (FRR) — the backup path is pre-calculated and ready to go before any failure happens.
+
+This is used for critical services like VoIP, video calls, or financial transactions where you need to guarantee that traffic takes a specific path and never gets dropped, even during network failures.
