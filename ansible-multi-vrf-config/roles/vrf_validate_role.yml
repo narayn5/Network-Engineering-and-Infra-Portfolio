@@ -1,0 +1,26 @@
+---
+- name: Get VRF Information
+  cisco.iosxr.iosxr_command:
+    commands:
+      - "show vrf all"
+  register: vrf_list
+
+- name: Get Loopback Interface Status
+  cisco.iosxr.iosxr_command:
+    commands:
+      - "show ip interface brief | include Loopback"
+  register: loopback_status
+
+- name: Display VRF List
+  debug:
+    msg: "{{ vrf_list.stdout_lines[0] }}"
+
+- name: Display Loopback Status
+  debug:
+    msg: "{{ loopback_status.stdout_lines[0] }}"
+
+- name: Store results for report
+  set_fact:
+    validation_results:
+      vrf_list: "{{ vrf_list.stdout_lines[0] }}"
+      loopback_status: "{{ loopback_status.stdout_lines[0] }}"

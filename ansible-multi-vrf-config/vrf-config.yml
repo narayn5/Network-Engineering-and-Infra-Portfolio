@@ -1,0 +1,15 @@
+---
+- name: Configure Multi-VRF Network
+  hosts: iosxr
+  gather_facts: no
+
+  vars_files:
+    - group_vars/iosxr.yml
+
+  tasks:
+    - import_tasks: roles/vrf_config_role.yml
+
+  post_tasks:
+    - name: Configuration Complete
+      debug:
+        msg: "VRF configuration applied successfully"

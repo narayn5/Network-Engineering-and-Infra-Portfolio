@@ -1,0 +1,15 @@
+---
+- name: Validate Multi-VRF Configuration
+  hosts: iosxr
+  gather_facts: no
+
+  vars_files:
+    - group_vars/iosxr.yml
+
+  tasks:
+    - import_tasks: roles/vrf_validate_role.yml
+
+  post_tasks:
+    - name: Validation Complete
+      debug:
+        msg: "VRF validation complete"

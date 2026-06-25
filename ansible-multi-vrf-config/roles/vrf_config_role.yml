@@ -1,0 +1,44 @@
+---
+- name: Create VRFs
+  cisco.iosxr.iosxr_config:
+    lines:
+      - "vrf {{ item.name }}"
+    match: line
+  loop: "{{ vrfs }}"
+  register: vrf_creation
+
+- name: Create Loopback Interfaces
+  cisco.iosxr.iosxr_interfaces:
+    config:
+      - name: "Loopback{{ item.loopback_id }}"
+        description: "{{ item.name }} Loopback"
+        enabled: true
+    state: merged
+  loop: "{{ vrfs }}"
+  register: loopback_creation
+
+- name: Assign Loopbacks to VRFs
+  cisco.iosxr.iosxr_config:
+    lines:
+      - "vrf {{ item.name }}"
+      - "address-family ipv4 unicast"
+      - "interface Loopback{{ item.loopback_id }}"
+    match: line
+  loop: "{{ vrfs }}"
+  register: vrf_assignment
+
+- name: Configure Loopback IP Addresses
+  cisco.iosxr.iosxr_l3_interfaces:
+    config:
+      - name: "Loopback{{ item.loopback_id }}"
+        ipv4:
+          - address: "{{ item.loopback_ip }}/32"
+    state: merged
+  loop: "{{ vrfs }}"
+  register: ip_config
+
+- name: Display Configuration Results
+  debug:
+    msg: "VRF {{ item.item.name }} configured"
+  loop: "{{ vrf_creation.results }}"
+  when: item is changed
